@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserverAnimal
+    restart: on-failure
+    ports:
+      - "1234:1234"
+    environment:
+      MSSQL_SA_PASSWORD: "123456Braulio*"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_TCP_PORT: "1234"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:
